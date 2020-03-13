@@ -3,9 +3,13 @@ const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   entry: './index.js',
-  // target: 'node',
   mode: 'development',
   devtool: 'inline-source-map',
+  target: 'node',
+  node: {
+    __dirname: false,   // without this line __dirname returns / or blank string
+    __filename: false,  // without this line __filename returns / or blank string
+  },
 
   output: {
     path: path.resolve(__dirname, 'dist'),
